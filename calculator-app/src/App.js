@@ -11,34 +11,55 @@ function App() {
     {
       number: "",
     },
-    {
-      operation: "",
-    },
   ];
-  //const [input, setInput] = useState(["", ""]);
-  const [equation, setEquation] = useState(eqtion[0]);
-  //const [operation, setOperation] = useState("");
+  const [input, setInput] = useState("");
+  const [equation, setEquation] = useState(eqtion);
+  const [operation, setOperation] = useState("");
   const [ind, setInd] = useState(0);
+  const [result, setResult] = useState("");
   const add = (val) => {
-    eqtion[ind].number = eqtion[ind].number + val;
-    setEquation(eqtion);
+    console.log(ind, equation[0].number, equation[1].number);
+    const inp = input + val;
+    if (!isNaN(val)) {
+      if (ind === 0) {
+        let x = equation[1].number;
+        eqtion[1].number = x;
+      } else if (ind === 1) {
+        let x = equation[0].number;
+        eqtion[0].number = x;
+      }
+      let z = equation[ind].number + val;
+      eqtion[ind].number = z;
+      setEquation(eqtion);
+      console.log(ind, eqtion[ind].number);
+    }
+    setInput(inp);
   };
   const clear = () => {
     eqtion[0].number = "";
     eqtion[1].number = "";
+    setInput("");
+    setOperation("");
     setEquation(eqtion);
+    setInd(0);
   };
 
   const setOp = (val) => {
-    eqtion[2].operation = val;
-    setEquation(eqtion);
+    setInput(input + val);
+    setOperation(val);
     setInd(1);
+  };
+
+  const equals = () => {
+    const num1 = parseInt(equation[0].number, 10);
+    const num2 = parseInt(equation[1].number, 10);
+    if (operation === "+") {
+      setResult(num1 + num2);
+    }
   };
   return (
     <div>
-      <div className="flex-container">
-        {equation[0].number} {equation[2].operation} {equation[1].number}
-      </div>
+      <div className="flex-container">{input}</div>
       <div className="flex-container">
         <Button value="7" handleClick={add} />
         <Button value="8" handleClick={add} />
@@ -59,13 +80,14 @@ function App() {
       </div>
       <div className="flex-container">
         <Button value="0" handleClick={add} />
-        <Button value="=" handleClick={add} />
         <Button value="/" handleClick={setOp} />
         <Button value="%" handleClick={setOp} />
       </div>
       <div className="flex-container">
+        <Button value="=" handleClick={equals} />
         <Button value="Clear" handleClick={clear} />
       </div>
+      {result}
     </div>
   );
 }
