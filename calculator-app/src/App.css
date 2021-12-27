@@ -41,10 +41,11 @@
   background-color: black;
 }
 .result {
+  margin-top: 100px;
   justify-content: center;
   background-color: black;
   width: 400px;
-  margin-left: 196px;
+  margin-left: 760px;
   text-align: right;
 }
 @keyframes App-logo-spin {
