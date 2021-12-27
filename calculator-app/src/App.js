@@ -31,8 +31,6 @@ function App() {
       let z = equation[ind].number + val;
       eqtion[ind].number = z;
       setEquation(eqtion);
-      console.log(ind, eqtion[ind].number);
-      console.log(ind, equation[0].number, equation[1].number);
     }
     setInput(inp);
   };
@@ -82,16 +80,14 @@ function App() {
       eqtion[0].number = res;
       eqtion[1].number = "";
       setEquation(eqtion);
-    }
-    if (operation === "*") {
+    } else if (operation === "*") {
       let res = num1 * num2;
       setResult(res);
       setInput(res);
       eqtion[0].number = res;
       eqtion[1].number = "";
       setEquation(eqtion);
-    }
-    if (operation === "%") {
+    } else if (operation === "%") {
       let res = (num1 / num2) * 100;
       setResult(res);
       setInput(res);
@@ -99,8 +95,6 @@ function App() {
       eqtion[1].number = "";
       setEquation(eqtion);
     }
-
-    console.log("result is: ", result);
   };
   return (
     <div>
