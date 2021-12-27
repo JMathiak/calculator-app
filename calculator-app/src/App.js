@@ -18,7 +18,6 @@ function App() {
   const [ind, setInd] = useState(0);
   const [result, setResult] = useState("");
   const add = (val) => {
-    console.log(ind, equation[0].number, equation[1].number);
     const inp = input + val;
     if (!isNaN(val)) {
       if (ind === 0) {
@@ -32,6 +31,7 @@ function App() {
       eqtion[ind].number = z;
       setEquation(eqtion);
       console.log(ind, eqtion[ind].number);
+      console.log(ind, equation[0].number, equation[1].number);
     }
     setInput(inp);
   };
@@ -42,6 +42,7 @@ function App() {
     setOperation("");
     setEquation(eqtion);
     setInd(0);
+    setResult(0);
   };
 
   const setOp = (val) => {
@@ -54,8 +55,30 @@ function App() {
     const num1 = parseInt(equation[0].number, 10);
     const num2 = parseInt(equation[1].number, 10);
     if (operation === "+") {
-      setResult(num1 + num2);
+      let res = num1 + num2;
+      setResult(res);
+      setInput(input + "=" + res);
+    } else if (operation === "-") {
+      let res = num1 - num2;
+      setResult(res);
+      setInput(input + "=" + res);
+    } else if (operation === "/") {
+      let res = num1 / num2;
+      setResult(res);
+      setInput(input + "=" + res);
     }
+    if (operation === "*") {
+      let res = num1 * num2;
+      setResult(res);
+      setInput(input + "=" + res);
+    }
+    if (operation === "%") {
+      let res = (num1 / num2) * 100;
+      setResult(res);
+      setInput(input + "=" + res);
+    }
+
+    console.log("result is: ", result);
   };
   return (
     <div>
