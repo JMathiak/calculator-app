@@ -17,8 +17,23 @@ function App() {
   const [operation, setOperation] = useState("");
   const [ind, setInd] = useState(0);
   const [result, setResult] = useState("");
+  const [equals, setEquals] = useState(false);
   const add = (val) => {
     const inp = input + val;
+    // console.log(equals);
+    // if (!isNaN(val) && equals === true) {
+    //   console.log("gets here, ind = ", ind);
+    //   if (ind === 0) {
+    //     setInput("");
+    //     let inps = input + result;
+    //     let x = result;
+    //     eqtion[1].number = x;
+    //     setInd(1);
+    //     setEquals(false);
+    //     setInput(inps);
+    //   }
+    // }
+
     if (!isNaN(val)) {
       if (ind === 0) {
         let x = equation[1].number;
@@ -43,39 +58,60 @@ function App() {
     setEquation(eqtion);
     setInd(0);
     setResult(0);
+    setEquals(false);
   };
 
   const setOp = (val) => {
     setInput(input + val);
     setOperation(val);
-    setInd(1);
+    if (equals === false) {
+      setInd(1);
+    } else {
+      setInd(0);
+    }
   };
 
-  const equals = () => {
+  const solve = () => {
+    setInd(1);
     const num1 = parseInt(equation[0].number, 10);
     const num2 = parseInt(equation[1].number, 10);
     if (operation === "+") {
       let res = num1 + num2;
       setResult(res);
-      setInput(input + "=" + res);
+      setInput(res);
+      eqtion[0].number = res;
+      eqtion[1].number = "";
+      setEquation(eqtion);
     } else if (operation === "-") {
       let res = num1 - num2;
       setResult(res);
-      setInput(input + "=" + res);
+      setInput(res);
+      eqtion[0].number = res;
+      eqtion[1].number = "";
+      setEquation(eqtion);
     } else if (operation === "/") {
       let res = num1 / num2;
       setResult(res);
-      setInput(input + "=" + res);
+      setInput(res);
+      eqtion[0].number = res;
+      eqtion[1].number = "";
+      setEquation(eqtion);
     }
     if (operation === "*") {
       let res = num1 * num2;
       setResult(res);
-      setInput(input + "=" + res);
+      setInput(res);
+      eqtion[0].number = res;
+      eqtion[1].number = "";
+      setEquation(eqtion);
     }
     if (operation === "%") {
       let res = (num1 / num2) * 100;
       setResult(res);
-      setInput(input + "=" + res);
+      setInput(res);
+      eqtion[0].number = res;
+      eqtion[1].number = "";
+      setEquation(eqtion);
     }
 
     console.log("result is: ", result);
@@ -107,7 +143,7 @@ function App() {
         <Button value="%" handleClick={setOp} />
       </div>
       <div className="flex-container">
-        <Button value="=" handleClick={equals} />
+        <Button value="=" handleClick={solve} />
         <Button value="Clear" handleClick={clear} />
       </div>
       {result}
