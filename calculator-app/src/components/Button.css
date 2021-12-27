@@ -1,1 +1,14 @@
+.btn {
+  background-color: #1d2529;
+  color: white;
+  width: 100px;
+  text-align: center;
+}
 
+.symbol {
+  background-color: #9aaebb;
+}
+
+.equals {
+  background-color: #7492ac;
+}

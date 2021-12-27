@@ -118,35 +118,36 @@ function App() {
   };
   return (
     <div>
-      <div className="flex-container">{input}</div>
+      <div className="result">
+        <div className="result-container">{input}</div>
+      </div>
       <div className="flex-container">
         <Button value="7" handleClick={add} />
         <Button value="8" handleClick={add} />
         <Button value="9" handleClick={add} />
-        <Button value="*" handleClick={setOp} />
+        <Button value="*" isNum="false" handleClick={setOp} />
       </div>
       <div className="flex-container">
         <Button value="4" handleClick={add} />
         <Button value="5" handleClick={add} />
         <Button value="6" handleClick={add} />
-        <Button value="-" handleClick={setOp} />
+        <Button value="-" isNum="false" handleClick={setOp} />
       </div>
       <div className="flex-container">
         <Button value="1" handleClick={add} />
         <Button value="2" handleClick={add} />
         <Button value="3" handleClick={add} />
-        <Button value="+" handleClick={setOp} />
+        <Button value="+" isNum="false" handleClick={setOp} />
       </div>
       <div className="flex-container">
         <Button value="0" handleClick={add} />
-        <Button value="/" handleClick={setOp} />
-        <Button value="%" handleClick={setOp} />
+        <Button value="/" isNum="false" handleClick={setOp} />
+        <Button value="%" isNum="false" handleClick={setOp} />
+        <Button value="=" isNum="false" isEqls="true" handleClick={solve} />
       </div>
       <div className="flex-container">
-        <Button value="=" handleClick={solve} />
-        <Button value="Clear" handleClick={clear} />
+        <Button value="Clear" isNum="false" handleClick={clear} />
       </div>
-      {result}
     </div>
   );
 }

@@ -31,9 +31,22 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px;
+  gap: 0px;
 }
-
+.result-container {
+  display: inline-block;
+  padding-left: 98px;
+  justify-content: center;
+  color: white;
+  background-color: black;
+}
+.result {
+  justify-content: center;
+  background-color: black;
+  width: 400px;
+  margin-left: 196px;
+  text-align: right;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
