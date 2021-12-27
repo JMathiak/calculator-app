@@ -20,20 +20,6 @@ function App() {
   const [equals, setEquals] = useState(false);
   const add = (val) => {
     const inp = input + val;
-    // console.log(equals);
-    // if (!isNaN(val) && equals === true) {
-    //   console.log("gets here, ind = ", ind);
-    //   if (ind === 0) {
-    //     setInput("");
-    //     let inps = input + result;
-    //     let x = result;
-    //     eqtion[1].number = x;
-    //     setInd(1);
-    //     setEquals(false);
-    //     setInput(inps);
-    //   }
-    // }
-
     if (!isNaN(val)) {
       if (ind === 0) {
         let x = equation[1].number;
